@@ -7,6 +7,9 @@ dist/
 # dependencies
 node_modules/
 
+#MACOS DS STORE
+.DS_Store
+
 # logs
 npm-debug.log*
 yarn-debug.log*
