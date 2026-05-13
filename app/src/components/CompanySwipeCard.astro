@@ -1,0 +1,110 @@
+---
+interface Props {
+  companyName: string;
+  coverImage: string;
+  logoImage: string;
+  sector: string;
+  size: string;
+  description: string;
+  benefits: string[];
+  matchScore: number;
+  isTop?: boolean;
+  isSecond?: boolean;
+  isThird?: boolean;
+}
+
+const { 
+  companyName, 
+  coverImage, 
+  logoImage, 
+  sector,
+  size,
+  description,
+  benefits,
+  matchScore,
+  isTop = false,
+  isSecond = false,
+  isThird = false,
+} = Astro.props;
+
+// Calculate styles based on position in stack
+const zIndex = isTop ? 30 : isSecond ? 20 : isThird ? 10 : 0;
+const scale = isTop ? 'scale-100' : isSecond ? 'scale-[0.95]' : isThird ? 'scale-[0.90]' : 'scale-[0.85]';
+const translateY = isTop ? 'translate-y-0' : isSecond ? 'translate-y-4' : isThird ? 'translate-y-8' : 'translate-y-12';
+const opacity = isTop ? 'opacity-100' : isSecond ? 'opacity-100' : isThird ? 'opacity-50' : 'opacity-0';
+
+---
+
+<div class={`company-card-wrapper absolute w-full h-[65vh] max-h-[600px] min-h-[480px] left-0 right-0 px-4 spring-transition cursor-grab active:cursor-grabbing ${scale} ${translateY} ${opacity}`} style={`z-index: ${zIndex}; top: 12vh;`}>
+  
+  <div class="company-card relative w-full h-full glass-card overflow-hidden flex flex-col group">
+    
+    <!-- Match/Reject Overlays (Hidden by default, shown via JS) -->
+    <div class="overlay-match absolute inset-0 opacity-0 bg-[#FF8300]/80 backdrop-blur-sm spring-transition pointer-events-none z-40 flex items-center justify-center">
+      <div class="w-24 h-24 rounded-full bg-[#010146] flex items-center justify-center shadow-[0_0_30px_rgba(255,131,0,0.5)] border-2 border-white/20 scale-50 group-[.swipe-right]:scale-100 spring-transition">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-[#FF8300]">
+          <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+    
+    <div class="overlay-reject absolute inset-0 opacity-0 bg-black/60 backdrop-blur-md spring-transition pointer-events-none z-40 flex items-center justify-center">
+      <div class="w-24 h-24 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shadow-2xl scale-50 group-[.swipe-left]:scale-100 spring-transition">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-white">
+          <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Cover Image (Top 40%) -->
+    <div class="relative w-full h-[40%] bg-[#010146]">
+      <img src={coverImage} alt={`Cover of ${companyName}`} class="w-full h-full object-cover opacity-80" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#010146] to-transparent"></div>
+      
+      <!-- Match Badge -->
+      <div class="absolute top-4 right-4 bg-[#FF8300] backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 shadow-[0_0_15px_rgba(255,131,0,0.5)]">
+        <!-- SVG Donut Chart for Match Score -->
+        <div class="relative w-5 h-5">
+          <svg class="w-full h-full" viewBox="0 0 36 36">
+            <path class="text-white/30" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="100, 100" />
+            <path class="text-white" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray={`${matchScore}, 100`} />
+          </svg>
+        </div>
+        <span class="text-white font-bold text-xs">{matchScore}% Match</span>
+      </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="relative flex-1 bg-transparent pt-12 px-6 pb-6 flex flex-col">
+      
+      <!-- Logo overlapping cover -->
+      <div class="absolute -top-10 left-6 w-20 h-20 bg-[#010146] rounded-[20px] p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-white/20">
+        <img src={logoImage} alt={`${companyName} Logo`} class="w-full h-full rounded-[14px] object-cover" />
+      </div>
+      
+      <!-- Company Info -->
+      <div class="mb-4">
+        <h2 class="text-2xl font-black text-white leading-tight drop-shadow-sm">{companyName}</h2>
+        <p class="text-[13px] font-bold text-[#FF8300] mt-1 uppercase tracking-wide">{sector} · {size}</p>
+      </div>
+      
+      <!-- Description -->
+      <div class="mb-5 flex-1">
+        <p class="text-white/75 text-sm leading-relaxed line-clamp-3">
+          {description}
+        </p>
+      </div>
+      
+      <!-- Benefits Tags -->
+      <div class="flex flex-wrap gap-2 mt-auto">
+        {benefits.map((benefit) => (
+          <span class="px-3 py-1.5 bg-white/5 border border-white/10 text-white/80 text-xs font-semibold rounded-lg flex items-center gap-1.5 backdrop-blur-md">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FF8300] shadow-[0_0_5px_rgba(255,131,0,0.8)]"></span>
+            {benefit}
+          </span>
+        ))}
+      </div>
+      
+    </div>
+  </div>
+</div>

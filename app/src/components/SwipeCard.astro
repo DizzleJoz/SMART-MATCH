@@ -1,0 +1,73 @@
+---
+interface Props {
+  jobTitle: string;
+  companyName: string;
+  imageSrc: string;
+  skills: string[];
+  isTop?: boolean;
+  isSecond?: boolean;
+  isThird?: boolean;
+}
+
+const { 
+  jobTitle, 
+  companyName, 
+  imageSrc, 
+  skills,
+  isTop = false,
+  isSecond = false,
+  isThird = false,
+} = Astro.props;
+
+// Calculate styles based on position in stack
+const zIndex = isTop ? 30 : isSecond ? 20 : isThird ? 10 : 0;
+const scale = isTop ? 'scale-100' : isSecond ? 'scale-[0.95]' : isThird ? 'scale-[0.90]' : 'scale-[0.85]';
+const translateY = isTop ? 'translate-y-0' : isSecond ? 'translate-y-4' : isThird ? 'translate-y-8' : 'translate-y-12';
+const opacity = isTop ? 'opacity-100' : isSecond ? 'opacity-90' : isThird ? 'opacity-70' : 'opacity-0';
+
+// For demonstration of the match/reject glows, we could conditionally add classes, 
+// but here we just provide the base card structure.
+---
+
+<div class={`absolute w-full h-[70vh] max-h-[650px] min-h-[500px] left-0 right-0 px-4 spring-transition cursor-grab active:cursor-grabbing ${scale} ${translateY} ${opacity}`} style={`z-index: ${zIndex}; top: 12vh;`}>
+  
+  <div class="relative w-full h-full rounded-[24px] overflow-hidden bg-slate-200 shadow-card flex flex-col group">
+    
+    <!-- Image Area (70%) -->
+    <div class="absolute inset-0 w-full h-full">
+      <img src={imageSrc} alt={`${jobTitle} at ${companyName}`} class="w-full h-full object-cover" />
+      <!-- Subtle gradient to ensure text readability -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60"></div>
+    </div>
+    
+    <!-- Match/Reject Glow Indicators (Hidden by default, shown on swipe) -->
+    <div class="absolute inset-0 opacity-0 group-[.swipe-right]:opacity-100 group-[.swipe-right]:bg-green-500/20 spring-transition pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-0 group-[.swipe-left]:opacity-100 group-[.swipe-left]:bg-red-500/20 spring-transition pointer-events-none"></div>
+
+    <div class="absolute top-6 left-6 opacity-0 group-[.swipe-right]:opacity-100 spring-transition -rotate-12 border-4 border-green-500 rounded-lg px-4 py-1">
+      <span class="text-3xl font-black text-green-500 tracking-widest uppercase drop-shadow-md">Match</span>
+    </div>
+    <div class="absolute top-6 right-6 opacity-0 group-[.swipe-left]:opacity-100 spring-transition rotate-12 border-4 border-red-500 rounded-lg px-4 py-1">
+      <span class="text-3xl font-black text-red-500 tracking-widest uppercase drop-shadow-md">Pass</span>
+    </div>
+
+    <!-- Content Overlay (Bottom 30%) -->
+    <div class="absolute bottom-0 left-0 right-0 h-[35%] glass-panel p-6 flex flex-col justify-end gap-3 z-10">
+      
+      <div>
+        <h2 class="text-[22px] font-bold text-white drop-shadow-sm leading-tight">{jobTitle}</h2>
+        <p class="text-[16px] font-medium text-white/80 drop-shadow-sm mt-1">{companyName}</p>
+      </div>
+      
+      <!-- Skill Tags -->
+      <div class="flex flex-wrap gap-2 mt-1">
+        {skills.map((skill) => (
+          <span class="px-3 py-1 bg-[#E8F0FE] text-primary-500 text-xs font-semibold rounded-pill">
+            {skill}
+          </span>
+        ))}
+      </div>
+      
+    </div>
+  </div>
+</div>

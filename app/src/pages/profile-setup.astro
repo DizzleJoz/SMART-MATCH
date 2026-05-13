@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BottomNav from '../components/BottomNav.astro';
+---
+
+<Layout title="JobMatch | Crea tu perfil">
+  <div class="relative w-full h-full flex flex-col bg-transparent overflow-hidden">
+    
+    <!-- Top Bar with Progress -->
+    <div class="px-6 pt-12 pb-4 z-10">
+      <div class="flex items-center justify-between mb-4">
+        <a href="/role" class="p-3 -ml-3 text-white hover:text-white/70 spring-transition" style="min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </a>
+        <img src="/1x/Recurso 1.png" alt="JobMatch Logo" class="h-14 w-auto drop-shadow-md" />
+        <div class="w-[44px]"></div> <!-- Spacer for center alignment -->
+      </div>
+      <!-- Progress Bar and Step -->
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-[#FF8300] font-bold text-xs tracking-widest uppercase">Paso 2 de 3</span>
+      </div>
+      <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+        <div class="w-2/3 h-full bg-[#FF8300] rounded-full shadow-[0_0_10px_rgba(255,131,0,0.8)]"></div>
+      </div>
+    </div>
+
+    <!-- Scrollable Content Area -->
+    <div class="flex-1 overflow-y-auto px-6 pb-48 pt-2 no-scrollbar">
+      
+      <!-- Profile Header -->
+      <div class="mb-8 text-center">
+        <h1 class="text-2xl font-black text-white mb-2 drop-shadow-sm">Construye tu perfil</h1>
+        <p class="text-white/75 text-sm">Destaca tus mejores cualidades para hacer match.</p>
+      </div>
+
+      <!-- Avatar Upload -->
+      <div class="flex justify-center mb-8">
+        <div class="relative">
+          <div class="w-28 h-28 rounded-full bg-white/5 border border-white/15 shadow-md overflow-hidden flex items-center justify-center backdrop-blur-md">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-white/30">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <button class="absolute bottom-0 right-0 w-8 h-8 bg-[#FF8300] rounded-full text-white flex items-center justify-center shadow-[0_0_15px_rgba(255,131,0,0.4)] border-2 border-[#010146] hover:scale-110 spring-transition cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+              <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z" />
+              <path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 01-3 3h-15a3 3 0 01-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 001.11-.71l.822-1.315a2.942 2.942 0 012.332-1.39zM6.75 12.75a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0zm12-1.5a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <!-- Basic Info -->
+        <div class="space-y-4">
+          <div class="glass-input p-1">
+            <input type="text" placeholder="Nombre completo" class="w-full bg-transparent px-4 py-3 outline-none text-white font-semibold placeholder:text-white/50 placeholder:font-medium" value="Juliana Osorio" />
+          </div>
+          <div class="glass-input p-1">
+            <input type="text" placeholder="Ej. Diseñador UX Senior" class="w-full bg-transparent px-4 py-3 outline-none text-white font-semibold placeholder:text-white/50 placeholder:font-medium" value="Diseñadora UX/UI" />
+          </div>
+        </div>
+
+        <!-- Category -->
+        <div>
+          <label class="block text-sm font-bold text-white mb-3">Área de experiencia</label>
+          <div class="flex flex-wrap gap-2">
+            <button class="chip-outline cursor-pointer hover:bg-white/5 active:scale-95">Tech</button>
+            <button class="chip-outline active cursor-pointer active:scale-95">Diseño</button>
+            <button class="chip-outline cursor-pointer hover:bg-white/5 active:scale-95">Marketing</button>
+            <button class="chip-outline cursor-pointer hover:bg-white/5 active:scale-95">Finanzas</button>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <label class="block text-sm font-bold text-white">Habilidades técnicas</label>
+            <span class="text-xs font-semibold text-[#FF8300] bg-[#FF8300]/10 px-2 py-1 rounded-lg cursor-pointer hover:bg-[#FF8300]/20 spring-transition">+ Agregar</span>
+          </div>
+          <div class="flex flex-wrap gap-2 p-4 glass-card min-h-[100px] items-start border-white/10">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-sm font-medium shadow-sm backdrop-blur-md">
+              Figma 
+              <button class="text-white/50 hover:text-[#FF8300] spring-transition"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg></button>
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-sm font-medium shadow-sm backdrop-blur-md">
+              Prototyping 
+              <button class="text-white/50 hover:text-[#FF8300] spring-transition"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg></button>
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-sm font-medium shadow-sm backdrop-blur-md">
+              Design Systems 
+              <button class="text-white/50 hover:text-[#FF8300] spring-transition"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg></button>
+            </span>
+            <input type="text" class="bg-transparent outline-none text-sm text-white min-w-[50px] py-1.5 placeholder:text-white/50" placeholder="Escribe aquí..." />
+          </div>
+        </div>
+
+        <!-- Experience Slider -->
+        <div>
+          <div class="flex justify-between items-end mb-4">
+            <label class="block text-sm font-bold text-white">Años de experiencia</label>
+            <span class="text-xl font-black text-[#FF8300] drop-shadow-[0_0_8px_rgba(255,131,0,0.5)]">4 años</span>
+          </div>
+          <div class="relative w-full h-2 bg-white/10 rounded-full">
+            <div class="absolute top-0 left-0 h-full bg-[#FF8300] rounded-full shadow-[0_0_10px_rgba(255,131,0,0.8)]" style="width: 40%"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 w-6 h-6 bg-[#010146] border-[4px] border-[#FF8300] rounded-full shadow-[0_0_15px_rgba(255,131,0,0.6)] cursor-grab active:cursor-grabbing" style="left: 40%; transform: translate(-50%, -50%)"></div>
+          </div>
+          <div class="flex justify-between text-xs text-white/40 font-semibold mt-3">
+            <span>0</span>
+            <span>10+</span>
+          </div>
+        </div>
+
+        <!-- Modality -->
+        <div>
+          <label class="block text-sm font-bold text-white mb-3">Modalidad preferida</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="py-3 rounded-xl bg-[#FF8300]/10 text-[#FF8300] border border-[#FF8300]/50 font-semibold text-sm spring-transition">Remoto</button>
+            <button class="py-3 rounded-xl bg-white/5 text-white/70 border border-white/10 font-medium text-sm spring-transition hover:bg-white/10">Híbrido</button>
+            <button class="py-3 rounded-xl bg-white/5 text-white/70 border border-white/10 font-medium text-sm spring-transition hover:bg-white/10">Presencial</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Fixed Button -->
+    <div class="absolute bottom-24 left-0 right-0 p-6 bg-gradient-to-t from-[#010146] via-[#010146] to-transparent pt-12 z-20">
+      <a href="/photo-upload" class="btn-primary w-full py-4 text-lg">
+        Guardar y continuar
+      </a>
+    </div>
+
+    <BottomNav activeTab="profile" />
+
+  </div>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Smart Match - Professional Job Matching" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="h-screen w-screen overflow-hidden bg-[#010146] flex justify-center text-white">
+
+    <!-- Mobile App Container (Centered on Desktop) -->
+    <main class="w-full max-w-md h-full relative overflow-hidden flex flex-col sm:border-x sm:border-white/10 bg-[#010146] mx-auto shadow-2xl">
+      <slot />
+    </main>
+  </body>
+</html>

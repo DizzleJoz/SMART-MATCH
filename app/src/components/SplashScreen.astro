@@ -1,0 +1,18 @@
+<!-- src/components/SplashScreen.astro -->
+---
+// No props needed
+---
+<div id="splash" class="fixed inset-0 z-[300] flex items-center justify-center bg-[#010146]/95 backdrop-blur-[12px]">
+  <img src="/1x/Recurso 1.png" alt="JobMatch Logo" class="h-48 w-auto animate-logo-in drop-shadow-[0_0_50px_rgba(255,131,0,0.4)]" />
+</div>
+<script>
+  // Remove splash after 2 seconds (or when the app is ready)
+  setTimeout(() => {
+    const el = document.getElementById('splash');
+    if (el) {
+      el.style.transition = 'opacity 0.4s';
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 400);
+    }
+  }, 2000);
+</script>

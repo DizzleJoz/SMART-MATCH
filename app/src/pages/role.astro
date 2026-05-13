@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="JobMatch | Elige tu rol">
+  <div class="relative w-full h-full flex flex-col bg-transparent pt-12 pb-8 px-6">
+    
+    <!-- Header -->
+    <div class="mb-10 mt-2 relative z-10">
+      <div class="flex items-center justify-between mb-6">
+        <a href="/login" class="p-3 -ml-3 text-white hover:text-white/70 spring-transition" style="min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </a>
+        <img src="/1x/Recurso 1.png" alt="JobMatch Logo" class="h-14 w-auto drop-shadow-md" />
+        <div class="w-[44px]"></div> <!-- Spacer -->
+      </div>
+      
+      <p class="text-[#FF8300] font-bold text-sm tracking-widest uppercase mb-1">Paso 1 de 3</p>
+      <h1 class="text-3xl font-black text-white tracking-tight mb-2 drop-shadow-sm">
+        ¿Qué buscas hoy?
+      </h1>
+      <p class="text-white/75 font-medium">
+        Cuéntanos qué te trae por aquí para personalizar tu experiencia.
+      </p>
+    </div>
+
+    <!-- Cards Container -->
+    <div class="flex-1 flex flex-col gap-4 relative z-10">
+      
+      <!-- Option 1: Candidate -->
+      <button id="role-candidate" class="role-card group relative w-full glass-card p-6 text-left border border-white/10 shadow-sm spring-transition hover:border-white/20 active:scale-[0.98]">
+        <!-- Active Check Indicator -->
+        <div class="absolute top-4 right-4 w-6 h-6 rounded-full border-2 border-white/20 flex items-center justify-center spring-transition check-indicator">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-[#010146] opacity-0 scale-50 spring-transition check-icon">
+            <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        
+        <div class="w-14 h-14 rounded-[16px] bg-white/10 text-white flex items-center justify-center mb-5 icon-container spring-transition border border-white/5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+        </div>
+        
+        <h2 class="text-xl font-bold text-white mb-1">Estoy buscando trabajo</h2>
+        <p class="text-white/70 text-sm font-medium">Explora empresas y haz match con ofertas.</p>
+      </button>
+
+      <!-- Option 2: Company -->
+      <button id="role-company" class="role-card group relative w-full glass-card p-6 text-left border border-white/10 shadow-sm spring-transition hover:border-white/20 active:scale-[0.98]">
+        <!-- Active Check Indicator -->
+        <div class="absolute top-4 right-4 w-6 h-6 rounded-full border-2 border-white/20 flex items-center justify-center spring-transition check-indicator">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-[#010146] opacity-0 scale-50 spring-transition check-icon">
+            <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        
+        <div class="w-14 h-14 rounded-[16px] bg-white/10 text-white flex items-center justify-center mb-5 icon-container spring-transition border border-white/5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+          </svg>
+        </div>
+        
+        <h2 class="text-xl font-bold text-white mb-1">Quiero contratar talento</h2>
+        <p class="text-white/70 text-sm font-medium">Encuentra a los mejores perfiles para tu equipo.</p>
+      </button>
+      
+    </div>
+
+    <!-- Bottom Action -->
+    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#010146] via-[#010146] to-transparent pt-12 z-20">
+      <a href="/profile-setup" id="btn-continue" class="btn-primary w-full py-4 opacity-50 pointer-events-none transition-all duration-300">
+        Continuar
+      </a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  @reference "../styles/global.css";
+  /* Active states injected via JS */
+  .role-card.active {
+    @apply border-[#FF8300] bg-[#FF8300]/10;
+  }
+  .role-card.active .check-indicator {
+    @apply bg-[#FF8300] border-[#FF8300];
+  }
+  .role-card.active .check-icon {
+    @apply opacity-100 scale-100;
+  }
+  .role-card.active .icon-container {
+    @apply bg-[#FF8300] text-white border-transparent shadow-[0_0_15px_rgba(255,131,0,0.4)];
+  }
+</style>
+
+<script>
+  // Script runs on page load and after View Transitions
+  document.addEventListener('astro:page-load', () => {
+    const candidateBtn = document.getElementById('role-candidate');
+    const companyBtn = document.getElementById('role-company');
+    const continueBtn = document.getElementById('btn-continue');
+    
+    if (!candidateBtn || !companyBtn || !continueBtn) return;
+
+    let selectedRole = null;
+
+    const selectRole = (role) => {
+      selectedRole = role;
+      
+      // Reset both
+      candidateBtn.classList.remove('active');
+      companyBtn.classList.remove('active');
+      
+      // Activate selected
+      if (role === 'candidate') {
+        candidateBtn.classList.add('active');
+      } else {
+        companyBtn.classList.add('active');
+      }
+      
+      // Enable continue button
+      continueBtn.classList.remove('opacity-50', 'pointer-events-none');
+    };
+
+    candidateBtn.addEventListener('click', () => selectRole('candidate'));
+    companyBtn.addEventListener('click', () => selectRole('company'));
+  });
+</script>

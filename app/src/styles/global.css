@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #010146;
+  --color-brand-accent: #FF8300;
+  
+  --color-success-500: #22C55E;
+  --color-danger-500: #EF4444;
+  
+  --font-inter: "Inter", sans-serif;
+  
+  --radius-card: 16px;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  body {
+    @apply font-inter bg-[#010146] text-white antialiased overflow-hidden select-none;
+  }
+}
+
+@utility spring-transition {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer utilities {
+  
+  .glass-card {
+    @apply bg-[#010146]/60 backdrop-blur-[12px] rounded-[16px];
+    border: 0.1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-input {
+    @apply bg-white/5 text-white border border-white/15 rounded-xl spring-transition focus-within:border-[#FF8300] focus-within:shadow-[0_0_12px_rgba(255,131,0,0.2)];
+  }
+  
+  .btn-primary {
+    @apply bg-[#FF8300] text-white font-bold rounded-full spring-transition flex items-center justify-center cursor-pointer;
+    box-shadow: 0 0 20px rgba(255, 131, 0, 0.4);
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(255, 131, 0, 0.6);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  
+  .chip-outline {
+    @apply border border-[#FF8300] text-[#FF8300] rounded-full px-4 py-2 text-sm font-semibold spring-transition;
+  }
+  
+  .chip-outline.active {
+    @apply bg-[#FF8300] text-white;
+  }
+
+  /* No scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Toast Notification */
+  .toast {
+    @apply fixed bottom-32 left-1/2 -translate-x-1/2 z-[200] px-5 py-3.5 rounded-2xl text-sm font-semibold text-white max-w-[85%] text-center pointer-events-none;
+    background: rgba(1, 1, 70, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 131, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 131, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.4);
+    animation: toast-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  .toast.toast-out {
+    animation: toast-out 0.3s ease-in forwards;
+  }
+}
+
+/* Keyframes outside @layer */
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, 20px) scale(0.9); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -10px) scale(0.95); }
+}
+@keyframes logo-in {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-logo-in {
+  animation: logo-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
