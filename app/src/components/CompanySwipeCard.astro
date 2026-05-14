@@ -1,6 +1,7 @@
 ---
 interface Props {
   companyName: string;
+  jobTitle?: string;
   coverImage: string;
   logoImage: string;
   sector: string;
@@ -15,6 +16,7 @@ interface Props {
 
 const { 
   companyName, 
+  jobTitle = "Vacante Destacada",
   coverImage, 
   logoImage, 
   sector,
@@ -35,7 +37,7 @@ const opacity = isTop ? 'opacity-100' : isSecond ? 'opacity-100' : isThird ? 'op
 
 ---
 
-<div class={`company-card-wrapper absolute w-full h-[65vh] max-h-[600px] min-h-[480px] left-0 right-0 px-4 spring-transition cursor-grab active:cursor-grabbing ${scale} ${translateY} ${opacity}`} style={`z-index: ${zIndex}; top: 12vh;`}>
+<div class={`company-card-wrapper absolute w-full left-0 right-0 px-4 spring-transition cursor-grab active:cursor-grabbing ${scale} ${translateY} ${opacity}`} style={`z-index: ${zIndex}; top: 80px; bottom: 180px;`}>
   
   <div class="company-card relative w-full h-full glass-card overflow-hidden flex flex-col group">
     
@@ -56,13 +58,13 @@ const opacity = isTop ? 'opacity-100' : isSecond ? 'opacity-100' : isThird ? 'op
       </div>
     </div>
 
-    <!-- Cover Image (Top 40%) -->
-    <div class="relative w-full h-[40%] bg-[#010146]">
+    <!-- Cover Image (Top 30%) -->
+    <div class="relative w-full h-[30%] bg-[#010146]">
       <img src={coverImage} alt={`Cover of ${companyName}`} class="w-full h-full object-cover opacity-80" />
       <div class="absolute inset-0 bg-gradient-to-t from-[#010146] to-transparent"></div>
       
       <!-- Match Badge -->
-      <div class="absolute top-4 right-4 bg-[#FF8300] backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 shadow-[0_0_15px_rgba(255,131,0,0.5)]">
+      <div class="absolute top-4 right-4 z-10 bg-[#FF8300] backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 shadow-[0_0_15px_rgba(255,131,0,0.5)]">
         <!-- SVG Donut Chart for Match Score -->
         <div class="relative w-5 h-5">
           <svg class="w-full h-full" viewBox="0 0 36 36">
@@ -84,8 +86,8 @@ const opacity = isTop ? 'opacity-100' : isSecond ? 'opacity-100' : isThird ? 'op
       
       <!-- Company Info -->
       <div class="mb-4">
-        <h2 class="text-2xl font-black text-white leading-tight drop-shadow-sm">{companyName}</h2>
-        <p class="text-[13px] font-bold text-[#FF8300] mt-1 uppercase tracking-wide">{sector} · {size}</p>
+        <h2 class="text-2xl font-black text-white leading-tight drop-shadow-sm">{jobTitle}</h2>
+        <p class="text-[13px] font-bold text-[#FF8300] mt-1 uppercase tracking-wide">{companyName} · {sector} · {size}</p>
       </div>
       
       <!-- Description -->

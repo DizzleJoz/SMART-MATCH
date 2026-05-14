@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BottomNav from '../components/BottomNav.astro';
+
+// Mock data for the match detail (matching TechNova Inc. from index.astro)
+const matchData = {
+  companyName: "TechNova Inc.",
+  jobTitle: "Diseñadora UX/UI Senior",
+  sector: "Fintech",
+  size: "50-200 personas",
+  location: "Remoto · Bogotá, Colombia",
+  salary: "$3.5M - $5M COP",
+  description: "Estamos revolucionando los pagos B2B en América Latina. Buscamos talento apasionado por resolver problemas complejos, con enfoque en investigación de usuarios, wireframing, y creación de interfaces limpias, accesibles y escalables. Trabajarás codo a codo con product managers y desarrolladores frontend para transformar requerimientos en experiencias digitales galardonadas.",
+  culture: "En TechNova creemos en la autonomía y la creatividad. Fomentamos un ambiente donde fallar rápido es parte del proceso de aprendizaje. Nos encanta el código limpio, los diseños centrados en el usuario y los viernes de pizza (virtuales).",
+  requirements: ["3+ años de experiencia", "Figma avanzado", "Design Systems", "Prototypado rápido", "Inglés B2"],
+  benefits: ["Trabajo 100% remoto", "Equity / Stock Options", "Horario flexible", "Seguro de salud prepagada", "Bono anual por desempeño"],
+  matchScore: 94,
+  logoImage: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=150&h=150&fit=crop",
+  coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+};
+---
+
+<Layout title={`JobMatch | ${matchData.jobTitle}`}>
+  <div class="relative w-full h-full flex flex-col bg-transparent overflow-hidden">
+    
+    <!-- Header / Back Button -->
+    <div class="absolute top-0 left-0 right-0 z-50 px-6 pt-12 pb-4 flex items-center justify-between pointer-events-none">
+      <a href="/" class="w-10 h-10 rounded-full bg-[#010146]/60 backdrop-blur-md flex items-center justify-center text-white spring-transition hover:scale-105 active:scale-95 pointer-events-auto border border-white/20 shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 -ml-1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </a>
+      
+      <div class="bg-[#FF8300]/90 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5 shadow-lg border border-white/20 pointer-events-auto">
+        <div class="relative w-4 h-4">
+          <svg class="w-full h-full" viewBox="0 0 36 36">
+            <path class="text-white/30" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="100, 100" />
+            <path class="text-white" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray={`${matchData.matchScore}, 100`} />
+          </svg>
+        </div>
+        <span class="text-white font-bold text-xs">{matchData.matchScore}% Match</span>
+      </div>
+    </div>
+
+    <!-- Scrollable Content Area -->
+    <div class="flex-1 overflow-y-auto no-scrollbar pb-32">
+      
+      <!-- Cover Image -->
+      <div class="relative w-full h-64 bg-[#010146]">
+        <img src={matchData.coverImage} alt="Cover" class="w-full h-full object-cover opacity-80" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#010146] via-[#010146]/40 to-transparent"></div>
+      </div>
+      
+      <div class="px-6 -mt-16 relative z-10 flex flex-col">
+        <!-- Logo -->
+        <div class="w-24 h-24 bg-[#010146] rounded-[24px] p-1.5 shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-white/20 mb-4">
+          <img src={matchData.logoImage} alt={`${matchData.companyName} Logo`} class="w-full h-full rounded-[18px] object-cover" />
+        </div>
+        
+        <!-- Main Titles -->
+        <h1 class="text-3xl font-black text-white leading-tight drop-shadow-sm mb-1">{matchData.jobTitle}</h1>
+        <h2 class="text-lg font-bold text-white/80 mb-4">{matchData.companyName} <span class="text-white/40 font-normal">· {matchData.sector} · {matchData.size}</span></h2>
+        
+        <!-- Key Details Cards -->
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="glass-card p-3 border border-white/10 rounded-xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-[#FF8300]/10 flex items-center justify-center text-[#FF8300] shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433a19.695 19.695 0 002.682-2.282c1.944-1.99 3.946-4.948 3.946-8.567A6.5 6.5 0 0010 1a6.5 6.5 0 00-6.5 7.5c0 3.62 2.002 6.578 3.946 8.567a19.695 19.695 0 002.682 2.282 16.383 16.383 0 001.038.573l.018.008.006.003zM10 10a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] text-white/50 font-bold uppercase tracking-wider">Ubicación</p>
+              <p class="text-xs text-white font-semibold">{matchData.location}</p>
+            </div>
+          </div>
+          
+          <div class="glass-card p-3 border border-white/10 rounded-xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-[#FF8300]/10 flex items-center justify-center text-[#FF8300] shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                <path d="M10.75 10.818a.75.75 0 01-1.5 0V7.75a.75.75 0 011.5 0v3.068zM10 14a1 1 0 100-2 1 1 0 000 2z" />
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[10px] text-white/50 font-bold uppercase tracking-wider">Salario</p>
+              <p class="text-xs text-white font-semibold">{matchData.salary}</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- About the Role -->
+        <div class="mb-8">
+          <h3 class="text-lg font-black text-white mb-3">Acerca de la vacante</h3>
+          <p class="text-white/70 text-sm leading-relaxed">{matchData.description}</p>
+        </div>
+        
+        <!-- Requirements -->
+        <div class="mb-8">
+          <h3 class="text-lg font-black text-white mb-3">Requisitos clave</h3>
+          <div class="flex flex-wrap gap-2">
+            {matchData.requirements.map((req) => (
+              <span class="px-3 py-1.5 bg-white/5 border border-white/10 text-white/90 text-xs font-semibold rounded-lg flex items-center gap-1.5 backdrop-blur-md">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 text-[#FF8300]">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                </svg>
+                {req}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Benefits -->
+        <div class="mb-8">
+          <h3 class="text-lg font-black text-white mb-3">Beneficios y Perks</h3>
+          <ul class="space-y-2">
+            {matchData.benefits.map((benefit) => (
+              <li class="flex items-start gap-2 text-white/80 text-sm">
+                <span class="text-[#FF8300] font-black mt-0.5">•</span>
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- About the Company -->
+        <div class="mb-8">
+          <h3 class="text-lg font-black text-white mb-3">Cultura en {matchData.companyName}</h3>
+          <p class="text-white/70 text-sm leading-relaxed">{matchData.culture}</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Bottom Fixed CTA -->
+    <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#010146] via-[#010146] to-transparent pt-12 z-20">
+      <button id="btn-send-message" class="w-full py-4 bg-[#FF8300] rounded-full text-white font-bold text-lg spring-transition active:scale-95 shadow-[0_0_20px_rgba(255,131,0,0.4)] flex items-center justify-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+        </svg>
+        Enviar Mensaje
+      </button>
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // === Toast Utility ===
+    const showToast = (message: string) => {
+      document.querySelector('.toast')?.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add('toast-out');
+        setTimeout(() => toast.remove(), 300);
+      }, 2500);
+    };
+
+    // Actions
+    document.getElementById('btn-send-message')?.addEventListener('click', () => {
+      showToast('Funcionalidad de chat próximamente disponible');
+    });
+  });
+</script>
