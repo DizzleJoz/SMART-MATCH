@@ -33,5 +33,27 @@ const { title } = Astro.props;
     <main class="w-full max-w-md h-full relative overflow-hidden flex flex-col sm:border-x sm:border-white/10 bg-[#010146] mx-auto shadow-2xl">
       <slot />
     </main>
+
+    <script>
+      // Global Toast Utility
+      window.showToast = (message) => {
+        document.querySelector('.toast')?.remove();
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+          toast.classList.add('toast-out');
+          setTimeout(() => toast.remove(), 300);
+        }, 2500);
+      };
+
+      document.addEventListener('astro:page-load', () => {
+        const helpBtn = document.getElementById('global-help-btn');
+        helpBtn?.addEventListener('click', () => {
+          window.showToast('Soporte técnico: contacto@smartmatch.com');
+        });
+      });
+    </script>
   </body>
 </html>

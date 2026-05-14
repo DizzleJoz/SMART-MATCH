@@ -147,22 +147,11 @@ const matchData = {
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    // === Toast Utility ===
-    const showToast = (message: string) => {
-      document.querySelector('.toast')?.remove();
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = message;
-      document.body.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.add('toast-out');
-        setTimeout(() => toast.remove(), 300);
-      }, 2500);
-    };
+
 
     // Actions
     document.getElementById('btn-send-message')?.addEventListener('click', () => {
-      showToast('Funcionalidad de chat próximamente disponible');
+      window.showToast('Funcionalidad de chat próximamente disponible');
     });
   });
 </script>
